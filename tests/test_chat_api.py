@@ -21,7 +21,7 @@ def test_chat_flow_success(client):
     client_app, session_local = client
 
     class DummyPlanner:
-        async def get_plan(self, user_message, chat_history, latest_journal, user_profile):
+        async def get_plan(self, user_message, chat_history, latest_journal, user_profile, emotion_label):
             # Pastikan user_profile adalah objek yang benar atau None
             assert user_profile is None or isinstance(user_profile, UserProfile)
             return ConversationPlan(technique=CommunicationTechnique.INFORMATION)

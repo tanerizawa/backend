@@ -2,7 +2,7 @@
 
 fastapi
 SQLAlchemy
-pydantic
+pydantic>=2.7.0
 pydantic-settings
 passlib[bcrypt]
 python-jose[cryptography]
@@ -15,7 +15,8 @@ email-validator
 pytest-asyncio
 
 # Tambahan untuk Produksi & Task Queue
-+ gunicorn
-+ psycopg2-binary
-+ celery
-+ redis
+gunicorn
+psycopg2-binary
+celery
+redis
+alembic
