@@ -10,7 +10,7 @@ from app.schemas.plan import CommunicationTechnique, ConversationPlan
 from app.models.user_profile import UserProfile  # pastikan path ini valid
 
 class PlannerService:
-    def __init__(self, settings: Settings = settings):
+    def __init__(self, settings: Settings = Depends(lambda: settings)):
         self.settings = settings
         self.api_base_url = "https://openrouter.ai/api/v1"
         self.log = structlog.get_logger(__name__)
@@ -43,6 +43,7 @@ class PlannerService:
             chat_history: List[str],
             latest_journal: str,
             user_profile: Optional[UserProfile],
+            emotion_label: str,
     ) -> ConversationPlan:
         self.log.info("planning_conversation", user_message=user_message)
 

@@ -20,7 +20,7 @@ async def test_services_handle_invalid_credentials(monkeypatch, api_key):
     monkeypatch.setattr(PlannerService, "_call_openrouter", raise_error)
     monkeypatch.setattr(GeneratorService, "_call_openrouter", raise_error)
 
-    plan = await planner.get_plan("hi", [], "", "neutral")
+    plan = await planner.get_plan("hi", [], "", None, "neutral")
     assert plan.technique == CommunicationTechnique.UNKNOWN
 
     result = await generator.generate_response(plan, [], None)
